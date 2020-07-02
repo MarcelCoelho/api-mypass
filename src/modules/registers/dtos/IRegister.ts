@@ -13,7 +13,7 @@ export interface IRegisterData {
   updated_at: Date;
 }
 
-export interface IRegister extends mongoose.Document {
+export default interface IRegister extends mongoose.Document {
   id: string;
   name: string;
   description: string;

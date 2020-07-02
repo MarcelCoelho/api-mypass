@@ -10,7 +10,7 @@ export interface IUserData {
   updated_at: Date;
 }
 
-export interface IUser extends mongoose.Document {
+export default interface IUser extends mongoose.Document {
   id: string;
   name: string;
   email: string;

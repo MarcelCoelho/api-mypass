@@ -1,6 +1,6 @@
 import MongoClient from 'mongodb';
 
-import {IRegisterData, IRegister} from '@modules/registers/dtos/IRegister';
+import IRegister , {IRegisterData} from '@modules/registers/dtos/IRegister';
 import Register from '@modules/registers/infra/typeorm/entities/Register';
 import IRegisterRepository from '@modules/registers/repositories/IRegisterRepository';
 import AppError from '@shared/errors/AppError';
@@ -89,7 +89,7 @@ class RegistersRepository implements IRegisterRepository {
       updated_at: registerData.updated_at,
     })
 
-    await this.ormRepository.collection<IRegisterData>("registers").save(userModel);
+    await this.ormRepository.collection<IRegister>("registers").save(userModel);
 
   }
 

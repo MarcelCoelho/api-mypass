@@ -3,8 +3,7 @@ import MongoClient from 'mongodb';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import { IUserData, IUser } from '@modules/users/dtos/IUser';
-import AppError from '@shared/errors/AppError';
+import IUser, { IUserData } from '@modules/users/dtos/IUser';
 
 class UsersRepository implements IUsersRepository {
 

@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import IRegisterRepository from '../repositories/IRegisterRepository';
 import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
-import IRegister from '@modules/registers/dtos/IRegister';
+import {IRegisterData} from '@modules/registers/dtos/IRegister';
 
 interface IRequest {
   user_id: string;

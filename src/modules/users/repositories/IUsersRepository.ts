@@ -1,8 +1,8 @@
 
-import IUser from '@modules/users/dtos/IUser';
+import { IUserData } from '@modules/users/dtos/IUser';
 
 export default interface IUserRepository {
-  findById(id: string): Promise<IUser | null>;
-  findByEmail(email: string): Promise<IUser | null>;
-  create(data: IUser): Promise<void>;
+  findById(id: string): Promise<IUserData | null>;
+  findByEmail(email: string): Promise<IUserData | null>;
+  create(data: IUserData): Promise<void>;
 }

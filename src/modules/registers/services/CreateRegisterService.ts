@@ -4,7 +4,7 @@ import { uuid } from 'uuidv4';
 import AppError from '@shared/errors/AppError';
 import IRegisterRepository from '../repositories/IRegisterRepository';
 import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
-import IRegister from '@modules/registers/dtos/IRegister';
+import {IRegisterData} from '@modules/registers/dtos/IRegister';
 import UrlPhotoDefault from '../../../utils/constantes';
 
 interface IRequest {
@@ -27,7 +27,7 @@ class CreateRegisterService {
     private cryptoProvider: ICryptoProvider,
   ) { }
 
-  public async execute({ name, description, url, url_photo, user, password, user_id }: IRequest): Promise<IRegister> {
+  public async execute({ name, description, url, url_photo, user, password, user_id }: IRequest): Promise<IRegisterData> {
 
     if (!password) {
       throw new AppError('Password is empty.');
@@ -47,7 +47,7 @@ class CreateRegisterService {
 
     const date = new Date();
 
-    const registerData: IRegister = {
+    const registerData: IRegisterData = {
       id: uuid(),
       name,
       description,

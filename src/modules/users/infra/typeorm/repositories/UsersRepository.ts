@@ -3,7 +3,7 @@ import MongoClient from 'mongodb';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IUser from '@modules/users/dtos/IUser';
+import { IUserData, IUser } from '@modules/users/dtos/IUser';
 import AppError from '@shared/errors/AppError';
 
 class UsersRepository implements IUsersRepository {
@@ -16,7 +16,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   public async conectar() {
-    this.conn = MongoClient.connect(process.env.MONGO_URL || '');
+    this.conn = MongoClient.connect(process.env.MONGO_URL || '', { useNewUrlParser: true, useUnifiedTopology: true });
     this.ormRepository = (await this.conn).db('mypass');
   }
 
@@ -24,7 +24,7 @@ class UsersRepository implements IUsersRepository {
     (await this.conn).close();
   }
 
-  public async findById(id: string): Promise<IUser | null> {
+  public async findById(id: string): Promise<IUserData | null> {
     try {
       await this.conectar();
 
@@ -40,7 +40,7 @@ class UsersRepository implements IUsersRepository {
     }
   }
 
-  public async findByEmail(email: string): Promise<IUser | null> {
+  public async findByEmail(email: string): Promise<IUserData | null> {
     try {
       await this.conectar();
 
@@ -56,7 +56,8 @@ class UsersRepository implements IUsersRepository {
     }
   }
 
-  public async create(userData: IUser): Promise<void> {
+  public async create(userData: IUserData): Promise<void> {
+
     const userModel = new User({
       id: userData.id,
       name: userData.name,
@@ -67,9 +68,7 @@ class UsersRepository implements IUsersRepository {
       updated_at: userData.updated_at,
     })
 
-    userModel.save((err) => {
-      if (err) throw new AppError(err);
-    })
+    await this.ormRepository.collection<IUser>("users").save(userModel);
 
   };
 

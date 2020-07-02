@@ -1,9 +1,8 @@
 import MongoClient from 'mongodb';
 
-import IRegister from '@modules/registers/dtos/IRegister';
+import {IRegisterData, IRegister} from '@modules/registers/dtos/IRegister';
 import Register from '@modules/registers/infra/typeorm/entities/Register';
 import IRegisterRepository from '@modules/registers/repositories/IRegisterRepository';
-import ICreateRegisterDTO from '@modules/registers/dtos/IRegister';
 import AppError from '@shared/errors/AppError';
 
 class RegistersRepository implements IRegisterRepository {
@@ -23,7 +22,7 @@ class RegistersRepository implements IRegisterRepository {
     (await this.conn).close();
   }
 
-  public async findById(id: string): Promise<IRegister | null> {
+  public async findById(id: string): Promise<IRegisterData | null> {
     try {
       await this.conectar();
 
@@ -39,7 +38,7 @@ class RegistersRepository implements IRegisterRepository {
     }
   }
 
-  public async findByUserId(user_id: string): Promise<IRegister[] | undefined> {
+  public async findByUserId(user_id: string): Promise<IRegisterData[] | undefined> {
     try {
       await this.conectar();
 
@@ -59,7 +58,7 @@ class RegistersRepository implements IRegisterRepository {
     }
   }
 
-  public async findByName(name: string): Promise<IRegister | null> {
+  public async findByName(name: string): Promise<IRegisterData | null> {
     try {
       await this.conectar();
 
@@ -75,7 +74,7 @@ class RegistersRepository implements IRegisterRepository {
     }
   }
 
-  public async create(registerData: ICreateRegisterDTO): Promise<void> {
+  public async create(registerData: IRegisterData): Promise<void> {
 
     const userModel = new Register({
       id: registerData.id,
@@ -90,9 +89,7 @@ class RegistersRepository implements IRegisterRepository {
       updated_at: registerData.updated_at,
     })
 
-    userModel.save((err) => {
-      if (err) throw new AppError(err);
-    })
+    await this.ormRepository.collection<IRegisterData>("registers").save(userModel);
 
   }
 

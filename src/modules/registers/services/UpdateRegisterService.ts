@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import IRegisterRepository from '../repositories/IRegisterRepository';
 import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
-import IRegister from '@modules/registers/dtos/IRegister';
+import {IRegisterData} from '@modules/registers/dtos/IRegister';
 
 interface IRequest {
   id: string;
@@ -26,7 +26,7 @@ class UpdateRegisterService {
     private cryptoProvider: ICryptoProvider,
   ) { }
 
-  public async execute({ id, name, description, url, url_photo, user, password, user_id }: IRequest): Promise<IRegister> {
+  public async execute({ id, name, description, url, url_photo, user, password, user_id }: IRequest): Promise<IRegisterData> {
 
     if (!password) {
       throw new AppError('Password is empty.');

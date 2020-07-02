@@ -5,8 +5,6 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IUser from '@modules/users/dtos/IUser';
 import AppError from '@shared/errors/AppError';
-import usersRouter from '../../http/routes/users.routes';
-
 
 class UsersRepository implements IUsersRepository {
 
@@ -18,7 +16,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   public async conectar() {
-    this.conn = MongoClient.connect('mongodb+srv://mypass:mypass2020@cluster0.4pdwq.mongodb.net/mypass?retryWrites=true&w=majority');
+    this.conn = MongoClient.connect(process.env.MONGO_URL || '');
     this.ormRepository = (await this.conn).db('mypass');
   }
 

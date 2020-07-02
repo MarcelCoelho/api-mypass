@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 import { uuid } from 'uuidv4';
 
-import IUser from '@modules/users/dtos/IUser';
+import IUser, { IUserData } from '@modules/users/dtos/IUser';
 import AppError from '@shared/errors/AppError';
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 import IUserRepository from '../repositories/IUsersRepository';
@@ -23,7 +23,7 @@ class CreateUserService {
     private hashProvider: IHashProvider,
   ) { }
 
-  public async execute({ name, email, password, url_photo }: IRequest): Promise<IUser> {
+  public async execute({ name, email, password, url_photo }: IRequest): Promise<IUserData> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
@@ -38,7 +38,7 @@ class CreateUserService {
 
     const date = new Date();
 
-    const userData: IUser = {
+    const userData: IUserData = {
       id: uuid(),
       name,
       email,

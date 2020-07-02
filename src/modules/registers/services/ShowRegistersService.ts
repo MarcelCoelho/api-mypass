@@ -18,7 +18,7 @@ class ShowRegistersService {
     private cryptoProvider: ICryptoProvider,
   ) { }
 
-  public async execute({ user_id }: IRequest): Promise<IRegister[] | undefined> {
+  public async execute({ user_id }: IRequest): Promise<IRegisterData[] | undefined> {
     const registers = await this.registersRepository.findByUserId(user_id);
 
     if (registers) {

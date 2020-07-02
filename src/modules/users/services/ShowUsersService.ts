@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import IUserRepository from '@modules/users/repositories/IUsersRepository';
 import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
 
-import IUser from '@modules/users/dtos/IUser';
+import { IUserData } from '@modules/users/dtos/IUser';
 
 interface IRequest {
   email: string;
@@ -19,7 +19,7 @@ class ShowUsersService {
     private cryptoProvider: ICryptoProvider,
   ) { }
 
-  public async execute({ email }: IRequest): Promise<IUser | null> {
+  public async execute({ email }: IRequest): Promise<IUserData | null> {
     const user = await this.usersRepository.findByEmail(email);
 
     /* if (registers) {

@@ -7,3 +7,8 @@ tmp/*
 temp/
 
 .env
+prettier.config.js
+ormconfig.json
+tsconfig.json
+yarn-error.log
+.eslintrc.json

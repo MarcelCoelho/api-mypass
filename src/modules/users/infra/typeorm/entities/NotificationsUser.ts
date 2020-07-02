@@ -4,8 +4,6 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn
 } from 'typeorm';
 
 import User from '@modules/users/infra/typeorm/entities/User';
@@ -17,10 +15,6 @@ class UserNotifications {
 
   @Column()
   user_id: string;
-
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
 
   @Column()
   active: number;

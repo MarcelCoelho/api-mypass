@@ -5,13 +5,15 @@ import 'express-async-errors';
 
 //import AppError from '@shared/errors/AppError';
 import routes from './routes';
-import '../../../infra/typeorm';
+
 import '../../container';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+
+import '../../infra/typeorm';
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   return response.status(500).json({

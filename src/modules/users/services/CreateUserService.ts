@@ -1,8 +1,8 @@
 import { injectable, inject } from 'tsyringe';
 import { uuid } from 'uuidv4';
 
-import IUser, { IUserData } from '@modules/users/dtos/IUser';
-import AppError from '@shared/errors/AppError';
+import { IUserData } from '@modules/users/dtos/IUser';
+//import AppError from '@shared/errors/AppError';
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 import IUserRepository from '../repositories/IUsersRepository';
 
@@ -27,7 +27,7 @@ class CreateUserService {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
-      throw new AppError('Email address already used.');
+      throw new Error('Email address already used.');
     }
 
     const hashedPassword = await this.hashProvider.generateHash(password);

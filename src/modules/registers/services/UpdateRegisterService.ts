@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '@shared/errors/AppError';
+//import AppError from '@shared/errors/AppError';
 import IRegisterRepository from '../repositories/IRegisterRepository';
 import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
 import {IRegisterData} from '@modules/registers/dtos/IRegister';
@@ -29,13 +29,13 @@ class UpdateRegisterService {
   public async execute({ id, name, description, url, url_photo, user, password, user_id }: IRequest): Promise<IRegisterData> {
 
     if (!password) {
-      throw new AppError('Password is empty.');
+      throw new Error('Password is empty.');
     }
 
     const register = await this.registersRepository.findById(id);
 
     if (!register) {
-      throw new AppError('Register not found.');
+      throw new Error('Register not found.');
     }
 
     const passwordCrypted = await this.cryptoProvider.encrypt(user_id, password);

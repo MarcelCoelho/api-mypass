@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 import { uuid } from 'uuidv4';
 
-import AppError from '@shared/errors/AppError';
+//import AppError from '@shared/errors/AppError';
 import IRegisterRepository from '../repositories/IRegisterRepository';
 import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
 import {IRegisterData} from '@modules/registers/dtos/IRegister';
@@ -30,13 +30,13 @@ class CreateRegisterService {
   public async execute({ name, description, url, url_photo, user, password, user_id }: IRequest): Promise<IRegisterData> {
 
     if (!password) {
-      throw new AppError('Password is empty.');
+      throw new Error('Password is empty.');
     }
 
     const checkRegister = await this.registersRepository.findByName(name);
 
     if (checkRegister && checkRegister.user_id === user_id) {
-      throw new AppError('Register already used with this name.');
+      throw new Error('Register already used with this name.');
     }
 
     const passwordCrypted = await this.cryptoProvider.encrypt(user_id, password);

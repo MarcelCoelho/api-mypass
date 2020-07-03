@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import ShowRegisterByIdService from '@modules/registers/services/ShowRegisterByIdService';
-import DeleteRegisterByIdService from '@modules/registers/services/DeleteRegisterByIdService';
+import ShowRegisterByIdService from '../../../../registers/services/ShowRegisterByIdService';
+import DeleteRegisterByIdService from '../../../../registers/services/DeleteRegisterByIdService';
 
 export default class RegisterController {
 

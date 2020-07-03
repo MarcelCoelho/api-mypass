@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateRegisterService from '@modules/registers/services/CreateRegisterService';
-import UpdateRegisterService from '@modules/registers/services/UpdateRegisterService';
-import ShowRegisterService from '@modules/registers/services/ShowRegistersService';
-import ShowRegisterByIdService from '@modules/registers/services/ShowRegisterByIdService';
+import CreateRegisterService from '../../../../registers/services/CreateRegisterService';
+import UpdateRegisterService from '../../../../registers/services/UpdateRegisterService';
+import ShowRegisterService from '../../../../registers/services/ShowRegistersService';
+import ShowRegisterByIdService from '../../../../registers/services/ShowRegisterByIdService';
 
 export default class RegistersController {
 

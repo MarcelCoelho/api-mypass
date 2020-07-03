@@ -1,4 +1,4 @@
-import {IRegisterData} from '@modules/registers/dtos/IRegister';
+import {IRegisterData} from '../../registers/dtos/IRegister';
 
 export default interface IRegisterRepository {
   findById(id: string): Promise<IRegisterData | null>;

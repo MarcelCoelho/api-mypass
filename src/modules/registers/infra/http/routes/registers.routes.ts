@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticate';
-import RegistersController from '@modules/registers/infra/http/controllers/RegistersControllers';
+//import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticate';
+import RegistersController from '../../../../registers/infra/http/controllers/RegistersControllers';
 
 const registersController = new RegistersController();
 

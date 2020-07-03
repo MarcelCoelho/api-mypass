@@ -1,7 +1,7 @@
 
 import mongoose from 'mongoose';
 
-import IRegister from '@modules/registers/dtos/IRegister';
+import IRegister from '../../../../registers/dtos/IRegister';
 
 const RegisterSchema = new mongoose.Schema({
   id: String,

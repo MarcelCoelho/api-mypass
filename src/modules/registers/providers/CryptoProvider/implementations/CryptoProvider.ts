@@ -1,4 +1,4 @@
-import IHashProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
+import IHashProvider from '../../../../registers/providers/CryptoProvider/models/ICryptoProvider';
 import CryptoJS from 'crypto-js';
 
 class CryptoProvider implements IHashProvider {

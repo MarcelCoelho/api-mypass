@@ -1,8 +1,8 @@
 import MongoClient from 'mongodb';
 
-import IRegister , {IRegisterData} from '@modules/registers/dtos/IRegister';
-import Register from '@modules/registers/infra/typeorm/entities/Register';
-import IRegisterRepository from '@modules/registers/repositories/IRegisterRepository';
+import IRegister , {IRegisterData} from '../../../../registers/dtos/IRegister';
+import Register from '../../../../registers/infra/typeorm/entities/Register';
+import IRegisterRepository from '../../../../registers/repositories/IRegisterRepository';
 //import AppError from '@shared/errors/AppError';
 
 class RegistersRepository implements IRegisterRepository {

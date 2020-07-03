@@ -3,8 +3,8 @@ import { uuid } from 'uuidv4';
 
 //import AppError from '@shared/errors/AppError';
 import IRegisterRepository from '../repositories/IRegisterRepository';
-import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
-import {IRegisterData} from '@modules/registers/dtos/IRegister';
+import ICryptoProvider from '../../registers/providers/CryptoProvider/models/ICryptoProvider';
+import {IRegisterData} from '../../registers/dtos/IRegister';
 import UrlPhotoDefault from '../../../utils/constantes';
 
 interface IRequest {

@@ -2,8 +2,8 @@ import { injectable, inject } from 'tsyringe';
 
 //import AppError from '@shared/errors/AppError';
 import IRegisterRepository from '../repositories/IRegisterRepository';
-import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
-import {IRegisterData} from '@modules/registers/dtos/IRegister';
+import ICryptoProvider from '../../registers/providers/CryptoProvider/models/ICryptoProvider';
+import {IRegisterData} from '../../registers/dtos/IRegister';
 
 interface IRequest {
   id: string;

@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import sessionsRouter from '@modules/users/infra/http/routes/sessions.routes';
-import usersRouter from '@modules/users/infra/http/routes/users.routes';
-import registerRouter from '@modules/registers/infra/http/routes/register.routes';
-import registersRouter from '@modules/registers/infra/http/routes/registers.routes';
+import sessionsRouter from '../../../../modules/users/infra/http/routes/sessions.routes';
+import usersRouter from '../../../../modules/users/infra/http/routes/users.routes';
+import registerRouter from '../../../../modules/registers/infra/http/routes/register.routes';
+import registersRouter from '../../../../modules/registers/infra/http/routes/registers.routes';
 
 const routes = Router();
 

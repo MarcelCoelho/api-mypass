@@ -91,8 +91,8 @@ class RegistersRepository implements IRegisterRepository {
       updated_at: registerData.updated_at,
     })
 
-    userModel.save();
-    await this.ormRepository.collection<IRegister>("registers").save(userModel);
+    //userModel.save();
+    await this.ormRepository.collection<IRegisterData>("registers").insertOne(registerData);
 
     await this.desconectar();
 

@@ -13,8 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-import '../../infra/typeorm';
-
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   return response.status(500).json({
     status: 'error',

@@ -2,9 +2,9 @@ import { sign } from 'jsonwebtoken';
 import { injectable, inject } from 'tsyringe';
 //import AppError from '@shared/errors/AppError';
 
-import { IUserData } from '@modules/users/dtos/IUser';
-import authConfig from '@config/auth';
-import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
+import { IUserData } from '../../users/dtos/IUser';
+import authConfig from '../../../config/auth';
+import IHashProvider from '../../users/providers/HashProvider/models/IHashProvider';
 import IUserRepository from '../repositories/IUsersRepository';
 
 interface IRequest {

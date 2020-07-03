@@ -1,9 +1,9 @@
 //import { getRepository, Repository } from 'typeorm';
 import MongoClient from 'mongodb';
 
-import User from '@modules/users/infra/typeorm/entities/User';
-import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IUser, { IUserData } from '@modules/users/dtos/IUser';
+import User from '../../../../users/infra/typeorm/entities/User';
+import IUsersRepository from '../../../../users/repositories/IUsersRepository';
+import IUser, { IUserData } from '../../../../users/dtos/IUser';
 
 class UsersRepository implements IUsersRepository {
 

@@ -1,5 +1,5 @@
 
-import { IUserData } from '@modules/users/dtos/IUser';
+import { IUserData } from '../../users/dtos/IUser';
 
 export default interface IUserRepository {
   findById(id: string): Promise<IUserData | null>;

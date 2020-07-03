@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateUserService from '@modules/users/services/CreateUserService';
-import ShowUsersService from '@modules/users/services/ShowUsersService';
+import CreateUserService from '../../../../users/services/CreateUserService';
+import ShowUsersService from '../../../../users/services/ShowUsersService';
 
 export default class UsersController {
   async show(request: Request, response: Response): Promise<Response> {

@@ -1,9 +1,9 @@
 import { injectable, inject } from 'tsyringe';
 
-import IUserRepository from '@modules/users/repositories/IUsersRepository';
-import ICryptoProvider from '@modules/registers/providers/CryptoProvider/models/ICryptoProvider';
+import IUserRepository from '../../users/repositories/IUsersRepository';
+import ICryptoProvider from '../../registers/providers/CryptoProvider/models/ICryptoProvider';
 
-import { IUserData } from '@modules/users/dtos/IUser';
+import { IUserData } from '../../users/dtos/IUser';
 
 interface IRequest {
   email: string;

@@ -1,9 +1,9 @@
 import { injectable, inject } from 'tsyringe';
 import { uuid } from 'uuidv4';
 
-import { IUserData } from '@modules/users/dtos/IUser';
+import { IUserData } from '../../users/dtos/IUser';
 //import AppError from '@shared/errors/AppError';
-import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
+import IHashProvider from '../../users/providers/HashProvider/models/IHashProvider';
 import IUserRepository from '../repositories/IUsersRepository';
 
 interface IRequest {

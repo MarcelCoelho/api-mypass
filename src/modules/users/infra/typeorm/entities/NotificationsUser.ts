@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import User from '@modules/users/infra/typeorm/entities/User';
+//import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('users_notifications')
 class UserNotifications {

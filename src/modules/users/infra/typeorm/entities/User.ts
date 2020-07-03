@@ -1,7 +1,7 @@
 //import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import mongoose from 'mongoose';
 
-import IUser from '@modules/users/dtos/IUser';
+import IUser from '../../../../users/dtos/IUser';
 
 const UserSchema = new mongoose.Schema({
   id: String,

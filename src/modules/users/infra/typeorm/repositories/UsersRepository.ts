@@ -57,18 +57,11 @@ class UsersRepository implements IUsersRepository {
 
   public async create(userData: IUserData): Promise<void> {
 
-    const userModel = new User({
-      id: userData.id,
-      name: userData.name,
-      email: userData.email,
-      password: userData.password,
-      url_photo: userData.url_photo,
-      created_at: userData.created_at,
-      updated_at: userData.updated_at,
-    })
+    await this.conectar();
 
-    userModel.save();
-    //await this.ormRepository.collection<IUser>("users").save(userModel);
+    await this.ormRepository.collection<IUserData>("registers").insertOne(userData);
+
+    await this.desconectar();
 
   };
 

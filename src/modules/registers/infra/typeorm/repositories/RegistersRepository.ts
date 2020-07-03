@@ -1,6 +1,6 @@
 import MongoClient from 'mongodb';
 
-import IRegister , {IRegisterData} from '../../../../registers/dtos/IRegister';
+import IRegister, { IRegisterData } from '../../../../registers/dtos/IRegister';
 import Register from '../../../../registers/infra/typeorm/entities/Register';
 import IRegisterRepository from '../../../../registers/repositories/IRegisterRepository';
 //import AppError from '@shared/errors/AppError';
@@ -44,7 +44,7 @@ class RegistersRepository implements IRegisterRepository {
 
       if (user_id) {
 
-        var query = {user_id: user_id}
+        var query = { user_id: user_id }
         const resultado = await this.ormRepository.collection<IRegister>("registers").find(query).toArray();
 
         return resultado;
@@ -78,20 +78,6 @@ class RegistersRepository implements IRegisterRepository {
 
     await this.conectar();
 
-    const userModel = new Register({
-      id: registerData.id,
-      name: registerData.name,
-      description: registerData.description,
-      url: registerData.url,
-      url_photo: registerData.url_photo,
-      user: registerData.user,
-      password: registerData.password,
-      user_id: registerData.user_id,
-      created_at: registerData.created_at,
-      updated_at: registerData.updated_at,
-    })
-
-    //userModel.save();
     await this.ormRepository.collection<IRegisterData>("registers").insertOne(registerData);
 
     await this.desconectar();

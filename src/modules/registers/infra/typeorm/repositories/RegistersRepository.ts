@@ -76,6 +76,8 @@ class RegistersRepository implements IRegisterRepository {
 
   public async create(registerData: IRegisterData): Promise<void> {
 
+    await this.conectar();
+
     const userModel = new Register({
       id: registerData.id,
       name: registerData.name,
@@ -90,7 +92,9 @@ class RegistersRepository implements IRegisterRepository {
     })
 
     userModel.save();
-    //await this.ormRepository.collection<IRegister>("registers").save(userModel);
+    await this.ormRepository.collection<IRegister>("registers").save(userModel);
+
+    await this.desconectar();
 
   }
 

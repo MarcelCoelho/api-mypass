@@ -14,7 +14,7 @@ class RegistersRepository implements IRegisterRepository {
   }
 
   public async conectar() {
-    this.conn = MongoClient.connect('mongodb+srv://mypass:mypass2020@cluster0.4pdwq.mongodb.net/mypass?retryWrites=true&w=majority');
+    this.conn = MongoClient.connect(process.env.MONGO_URL || '');
     this.ormRepository = (await this.conn).db('mypass');
   }
 
@@ -89,7 +89,8 @@ class RegistersRepository implements IRegisterRepository {
       updated_at: registerData.updated_at,
     })
 
-    await this.ormRepository.collection<IRegister>("registers").save(userModel);
+    userModel.save();
+    //await this.ormRepository.collection<IRegister>("registers").save(userModel);
 
   }
 

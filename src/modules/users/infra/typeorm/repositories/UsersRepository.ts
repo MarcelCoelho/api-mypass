@@ -15,7 +15,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   public async conectar() {
-    this.conn = MongoClient.connect(process.env.MONGO_URL || '', { useNewUrlParser: true, useUnifiedTopology: true });
+    this.conn = MongoClient.connect(process.env.MONGO_URL || '');
     this.ormRepository = (await this.conn).db('mypass');
   }
 
@@ -67,7 +67,8 @@ class UsersRepository implements IUsersRepository {
       updated_at: userData.updated_at,
     })
 
-    await this.ormRepository.collection<IUser>("users").save(userModel);
+    userModel.save();
+    //await this.ormRepository.collection<IUser>("users").save(userModel);
 
   };
 

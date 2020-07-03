@@ -6,6 +6,9 @@ import IRegisterRepository from '../../../../registers/repositories/IRegisterRep
 //import AppError from '@shared/errors/AppError';
 
 class RegistersRepository implements IRegisterRepository {
+
+  private dbName: string = "mypass";
+  private tableNameRegisters: string = "registers";
   private ormRepository: MongoClient.Db;
   private conn: Promise<MongoClient.MongoClient>;
 
@@ -15,7 +18,7 @@ class RegistersRepository implements IRegisterRepository {
 
   public async conectar() {
     this.conn = MongoClient.connect(process.env.MONGO_URL || '');
-    this.ormRepository = (await this.conn).db('mypass');
+    this.ormRepository = (await this.conn).db(this.dbName);
   }
 
   private async desconectar() {
@@ -26,7 +29,7 @@ class RegistersRepository implements IRegisterRepository {
     try {
       await this.conectar();
 
-      const resultado = await this.ormRepository.collection<IRegister>("registers").findOne({ id });
+      const resultado = await this.ormRepository.collection<IRegister>(this.tableNameRegisters).findOne({ id });
 
       return resultado;
     }
@@ -45,7 +48,7 @@ class RegistersRepository implements IRegisterRepository {
       if (user_id) {
 
         var query = { user_id: user_id }
-        const resultado = await this.ormRepository.collection<IRegister>("registers").find(query).toArray();
+        const resultado = await this.ormRepository.collection<IRegister>(this.tableNameRegisters).find(query).toArray();
 
         return resultado;
       }
@@ -62,7 +65,7 @@ class RegistersRepository implements IRegisterRepository {
     try {
       await this.conectar();
 
-      const resultado = await this.ormRepository.collection<IRegister>("registers").findOne({ name });
+      const resultado = await this.ormRepository.collection<IRegister>(this.tableNameRegisters).findOne({ name });
 
       return resultado;
     }
@@ -78,7 +81,7 @@ class RegistersRepository implements IRegisterRepository {
 
     await this.conectar();
 
-    await this.ormRepository.collection<IRegisterData>("registers").insertOne(registerData);
+    await this.ormRepository.collection<IRegisterData>(this.tableNameRegisters).insertOne(registerData);
 
     await this.desconectar();
 
@@ -88,7 +91,7 @@ class RegistersRepository implements IRegisterRepository {
     try {
       await this.conectar();
 
-      await this.ormRepository.collection<IRegister>("registers").deleteOne({ id });
+      await this.ormRepository.collection<IRegister>(this.tableNameRegisters).deleteOne({ id });
 
     }
     catch (err) {
